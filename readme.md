@@ -56,7 +56,7 @@ Built with Express.js, MongoDB (Mongoose + GridFS), JWT authentication, password
 ### Installation
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/role-crud-backend.git
+   git clone https://github.com/ijc3093/role-crud-backend-postman.git
    cd role-crud-backend
 
 2. Install dependencies

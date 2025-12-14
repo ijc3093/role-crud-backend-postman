@@ -1,0 +1,105 @@
+{
+  "info": {
+    "name": "Role CRUD API (REST + SOAP) Collection",
+    "_postman_id": "role-crud-demo",
+    "description": "Collection to test REST endpoints and SOAP (raw) endpoints. Set baseUrl variable to http://localhost:3000",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth - Login (get JWT)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"demo-admin\",\n  \"role\": \"admin\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth","login"] }
+      }
+    },
+    {
+      "name": "REST - List Roles (GET)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": { "raw": "{{baseUrl}}/api/roles", "host": ["{{baseUrl}}"], "path": ["api","roles"] }
+      }
+    },
+    {
+      "name": "REST - Create Role (POST) [admin only]",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"manager\",\n  \"description\": \"Manager role\",\n  \"permissions\": [\"read_reports\",\"edit_team\"]\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/roles", "host": ["{{baseUrl}}"], "path": ["api","roles"] }
+      }
+    },
+    {
+      "name": "REST - Update Role (PUT) [admin/manager]",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{ \"description\": \"Updated description\" }" },
+        "url": { "raw": "{{baseUrl}}/api/roles/{{roleId}}", "host": ["{{baseUrl}}"], "path": ["api","roles","{{roleId}}"] }
+      }
+    },
+    {
+      "name": "REST - Delete Role (DELETE) [admin only]",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": { "raw": "{{baseUrl}}/api/roles/{{roleId}}", "host": ["{{baseUrl}}"], "path": ["api","roles","{{roleId}}"] }
+      }
+    },
+    {
+      "name": "SOAP - ListRoles (POST raw)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "text/xml" },
+          { "key": "SOAPAction", "value": "ListRoles" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tns=\"http://example.com/roles\">\n  <soap:Body>\n    <tns:ListRolesRequest/>\n  </soap:Body>\n</soap:Envelope>"
+        },
+        "url": { "raw": "{{baseUrl}}/soap", "host": ["{{baseUrl}}"], "path": ["soap"] }
+      }
+    },
+    {
+      "name": "SOAP - GetRole (POST raw)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "text/xml" },
+          { "key": "SOAPAction", "value": "GetRole" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tns=\"http://example.com/roles\">\n  <soap:Body>\n    <tns:GetRoleRequest>\n      <id>{{roleId}}</id>\n    </tns:GetRoleRequest>\n  </soap:Body>\n</soap:Envelope>"
+        },
+        "url": { "raw": "{{baseUrl}}/soap", "host": ["{{baseUrl}}"], "path": ["soap"] }
+      }
+    }
+  ]
+}

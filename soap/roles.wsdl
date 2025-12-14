@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="RoleService"
+             targetNamespace="http://example.com/roles"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://example.com/roles"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <types>
+    <xsd:schema targetNamespace="http://example.com/roles">
+      <xsd:complexType name="Role">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="name" type="xsd:string"/>
+          <xsd:element name="description" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="permissions" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:element name="GetRoleRequest"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:string"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="GetRoleResponse"><xsd:complexType><xsd:sequence><xsd:element name="role" type="tns:Role"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="ListRolesRequest" type="xsd:anyType"/>
+      <xsd:element name="ListRolesResponse"><xsd:complexType><xsd:sequence><xsd:element name="roles" type="tns:Role" minOccurs="0" maxOccurs="unbounded"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="CreateRoleRequest"><xsd:complexType><xsd:sequence><xsd:element name="name" type="xsd:string"/><xsd:element name="description" type="xsd:string" minOccurs="0"/><xsd:element name="permissions" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="CreateRoleResponse"><xsd:complexType><xsd:sequence><xsd:element name="role" type="tns:Role"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="UpdateRoleRequest"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:string"/><xsd:element name="name" type="xsd:string" minOccurs="0"/><xsd:element name="description" type="xsd:string" minOccurs="0"/><xsd:element name="permissions" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="UpdateRoleResponse"><xsd:complexType><xsd:sequence><xsd:element name="role" type="tns:Role"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="DeleteRoleRequest"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:string"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="DeleteRoleResponse"><xsd:complexType><xsd:sequence><xsd:element name="success" type="xsd:boolean"/></xsd:sequence></xsd:complexType></xsd:element>
+    </xsd:schema>
+  </types>
+
+  <message name="GetRoleRequest"><part name="parameters" element="tns:GetRoleRequest"/></message>
+  <message name="GetRoleResponse"><part name="parameters" element="tns:GetRoleResponse"/></message>
+
+  <message name="ListRolesRequest"><part name="parameters" element="tns:ListRolesRequest"/></message>
+  <message name="ListRolesResponse"><part name="parameters" element="tns:ListRolesResponse"/></message>
+
+  <message name="CreateRoleRequest"><part name="parameters" element="tns:CreateRoleRequest"/></message>
+  <message name="CreateRoleResponse"><part name="parameters" element="tns:CreateRoleResponse"/></message>
+
+  <message name="UpdateRoleRequest"><part name="parameters" element="tns:UpdateRoleRequest"/></message>
+  <message name="UpdateRoleResponse"><part name="parameters" element="tns:UpdateRoleResponse"/></message>
+
+  <message name="DeleteRoleRequest"><part name="parameters" element="tns:DeleteRoleRequest"/></message>
+  <message name="DeleteRoleResponse"><part name="parameters" element="tns:DeleteRoleResponse"/></message>
+
+  <portType name="RolePortType">
+    <operation name="GetRole">
+      <input message="tns:GetRoleRequest"/>
+      <output message="tns:GetRoleResponse"/>
+    </operation>
+    <operation name="ListRoles">
+      <input message="tns:ListRolesRequest"/>
+      <output message="tns:ListRolesResponse"/>
+    </operation>
+    <operation name="CreateRole">
+      <input message="tns:CreateRoleRequest"/>
+      <output message="tns:CreateRoleResponse"/>
+    </operation>
+    <operation name="UpdateRole">
+      <input message="tns:UpdateRoleRequest"/>
+      <output message="tns:UpdateRoleResponse"/>
+    </operation>
+    <operation name="DeleteRole">
+      <input message="tns:DeleteRoleRequest"/>
+      <output message="tns:DeleteRoleResponse"/>
+    </operation>
+  </portType>
+
+  <binding name="RoleBinding" type="tns:RolePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetRole"><soap:operation soapAction="GetRole"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="ListRoles"><soap:operation soapAction="ListRoles"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="CreateRole"><soap:operation soapAction="CreateRole"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="UpdateRole"><soap:operation soapAction="UpdateRole"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="DeleteRole"><soap:operation soapAction="DeleteRole"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+  </binding>
+
+  <service name="RoleService">
+    <port name="RolePort" binding="tns:RoleBinding">
+      <soap:address location="http://localhost:3000/soap"/>
+    </port>
+  </service>
+</definitions>

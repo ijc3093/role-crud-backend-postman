@@ -122,4 +122,4 @@ Value: Bearer {{jwt}}
 - React frontend
 - Role assignment to users
 
-![Screenshot](https://github.com/ijc3093/role-crud-backend/blob/master/Screens_Postman/Create_New_Role.png)
+![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/Create_New_Role.PNG)

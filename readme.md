@@ -121,3 +121,5 @@ Value: Bearer {{jwt}}
 - Deploy to Render/Vercel
 - React frontend
 - Role assignment to users
+
+![Screenshot](https://github.com/ijc3093/role-crud-backend/blob/master/Screens-Postman/Create_New_Role.png)

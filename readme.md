@@ -123,3 +123,27 @@ Value: Bearer {{jwt}}
 - Role assignment to users
 
 ![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/Create_New_Role.PNG)
+
+![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/Login.PNG)
+
+![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/home_page.PNG)
+
+![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/Detail_Page.PNG)
+
+![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/Get_protect.PNG)
+
+![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/Get_All_list_Roles.PNG)
+
+![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/edit_role.PNG)
+
+![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/Get_profile_image_video.PNG)
+
+![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/edit_role.PNG)
+
+![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/change-password.PNG)
+
+![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/upload_image.PNG)
+
+![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/upload_video.PNG)
+
+![Screenshot](https://github.com/ijc3093/role-crud-backend-postman/blob/master/Screens_Postman/logout.PNG)
